@@ -1,0 +1,41 @@
+package Selenium_Tutorial;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class selectableExamples {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		System.setProperty("Webdriver.geko.driver", "D:\\Selenium_Testing\\driver\\geckodriver.exe");
+		WebDriver driver = new FirefoxDriver();
+		driver.navigate().to("http://www.leafground.com/pages/selectable.html");
+
+		List<WebElement> selectable = driver.findElements(By.xpath("//*[@id='selectable']/li"));
+		int size = selectable.size();
+		System.out.println(size);
+		
+		  
+		  Actions actions = new Actions(driver); actions.keyDown(Keys.CONTROL)
+		  .click(selectable.get(0)) .click(selectable.get(1)) .click(selectable.get(2))
+		  .click(selectable.get(5)) .build().perform();
+		  
+		 
+		/*
+		 * Actions actions = new Actions(driver);
+		 * actions.clickAndHold(selectable.get(0));
+		 * actions.clickAndHold(selectable.get(1));
+		 * actions.clickAndHold(selectable.get(3));
+		 * 
+		 * actions.build().perform();
+		 */
+	}
+
+}
